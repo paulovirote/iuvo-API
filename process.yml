@@ -1,0 +1,9 @@
+apps:
+  - script   : 'src/app.js'
+    name     : 'nodejs-seed-project-app'
+    exec_mode: 'cluster'
+    instances: -1
+  - script   : 'src/worker.js'
+    name     : 'nodejs-seed-project-worker'
+    exec_mode: 'cluster'
+    instances: 1

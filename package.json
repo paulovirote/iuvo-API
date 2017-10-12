@@ -1,0 +1,60 @@
+{
+  "name": "nodejs-seed-project",
+  "version": "1.1.0",
+  "description": "Seed project created to serve as a starting point for new projects, suggesting some patterns, dependencies/pacakges and style guide.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "pm2 start process.yml",
+    "stop": "pm2 stop process.yml",
+    "restart": "pm2 restart process.yml",
+    "dev": "nodemon src/app.js",
+    "test": "nyc ava",
+    "lint": "eslint src test || exit 0",
+    "cover": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4alltecnologia/node-es6-seed"
+  },
+  "keywords": [
+    "seed",
+    "project",
+    "4all",
+    "node",
+    "pm2",
+    "i18n",
+    "knex"
+  ],
+  "author": "4All Tecnologia EPP",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "cors": "^2.8.1",
+    "cron": "^1.2.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.14.0",
+    "express-winston": "^2.4.0",
+    "helmet": "^3.3.0",
+    "i18n": "^0.8.3",
+    "joi": "^11.3.3",
+    "knex": "^0.13.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "moment-timezone": "^0.5.11",
+    "mysql2": "^1.1.2",
+    "request": "^2.81.0",
+    "request-debug": "^0.2.0",
+    "string-mask": "^0.3.0",
+    "winston": "^2.3.0",
+    "winston-firehose": "^1.0.8"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb-base": "^12.0.2",
+    "eslint-plugin-import": "^2.2.0",
+    "nyc": "^11.2.1"
+  }
+}
