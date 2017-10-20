@@ -11,6 +11,7 @@ const i18n = require('./config/i18n');
 
 /* Routes */
 const userRoutes = require('./routes/user');
+const tempoRoutes = require('./routes/tempo');
 
 /* Express initialization */
 const app = express();
@@ -38,6 +39,7 @@ app.get('/', (req, res) => {
 
 /* Instatiate routes */
 app.use('/user', userRoutes);
+app.use('/tempo', tempoRoutes);
 
 /* Log errors */
 LoggerConfig.expressError(app);
