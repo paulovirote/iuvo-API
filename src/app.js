@@ -12,6 +12,7 @@ const i18n = require('./config/i18n');
 /* Routes */
 const userRoutes = require('./routes/user');
 const tempoRoutes = require('./routes/tempo');
+const ocorrenciaRoutes = require('./routes/ocorrencia');
 
 /* Express initialization */
 const app = express();
@@ -40,6 +41,7 @@ app.get('/', (req, res) => {
 /* Instatiate routes */
 app.use('/user', userRoutes);
 app.use('/tempo', tempoRoutes);
+app.use('/ocorrencia', ocorrenciaRoutes);
 
 /* Log errors */
 LoggerConfig.expressError(app);
