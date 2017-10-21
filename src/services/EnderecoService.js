@@ -37,7 +37,7 @@ class EnderecoService {
         address,
       });
 
-      return location.results[0].geometry.location;
+      return location.results[0];
     } catch (error) {
       throw error;
     }

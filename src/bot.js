@@ -4,11 +4,11 @@ const request = require('request');
 const bot = new TeleBot('465904519:AAEE5FUFQx9XPyJGnpHnT5afWtGGeqjGvyI');
 
 bot.on('/start', (msg) => {
-  return msg.reply.text('Fala ai mano, de boas?');
+  return msg.reply.text(`Olá ${msg.from.first_name}, do que você precisa?`);
 });
 
 bot.on('/ajuda', (msg) => {
-  return bot.sendMessage(msg.from.id, 'Tá feia a coisa? Manda tua localização que vamos ai te dar uma mão!', {
+  return bot.sendMessage(msg.from.id, 'Estou pronto para te ajudar! Mande sua localização!', {
     replyMarkup: bot.keyboard([
       [bot.button('location', 'Enviar minha localização')],
     ], {
@@ -35,8 +35,8 @@ bot.on('location', (msg) => {
       return msg.reply.text('Ocorreu um erro em sua solicitação. Tente novamente!');
     }
 
-    return msg.reply.text('Solicitação recebida. Estaremos ai o quanto antes possível!');
-    // return msg.reply.photo('http://4.bp.blogspot.com/_N5AwYWwAocY/TR9Ff4xTuxI/AAAAAAAAA_U/ahWFnJ6hD3c/s1600/positivo.jpg');
+    msg.reply.text('Ok, recebi. Assim que possível estaremos aí!');
+    return msg.reply.photo('http://i0.kym-cdn.com/photos/images/newsfeed/000/166/876/chuck-norris-thumbs-up.jpg');
   });
 });
 

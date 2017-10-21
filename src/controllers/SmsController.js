@@ -13,18 +13,18 @@ class SmsController {
     if (sms.indexOf(keyword) >= 0) {
       const endereco = sms.substring(keyword.length, sms.length);
 
-      const location = await EnderecoService.getLocationFromAddress(endereco);
+      const address = await EnderecoService.getLocationFromAddress(endereco);
 
       let mensagem;
       try {
         await OcorrenciaService.post({
-          lat: location.lat,
-          lng: location.lng,
+          lat: address.geometry.location.lat,
+          lng: address.geometry.location.lng,
           situacao: 'Outro',
           momento: 'Durante',
         });
 
-        mensagem = 'Vamos te salvar, guenta ai!';
+        mensagem = `Recebemos sua solicitação. Assim que possível estaremos no endereço informado! ${address.formatted_address}`;
       } catch (error) {
         mensagem = 'Ocorreu um erro ao solicitar a sua ajuda, se fudeu';
       }
