@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const RouteValidator = require('../../middlewares/RouteValidator');
 
-class OcorrenciaSchema extends RouteValidator {
+class EnderecoSchema extends RouteValidator {
   static get get() {
     const schema = {};
 
@@ -17,10 +17,7 @@ class OcorrenciaSchema extends RouteValidator {
   static get post() {
     const schema = {
       body: Joi.object().keys({
-        lat: Joi.string().required(),
-        lng: Joi.string().required(),
-        situacao: Joi.string().required(),
-        momento: Joi.string().required(),
+        name: Joi.string().required(),
       }),
     };
 
@@ -52,4 +49,4 @@ class OcorrenciaSchema extends RouteValidator {
 
 }
 
-module.exports = OcorrenciaSchema;
+module.exports = EnderecoSchema;

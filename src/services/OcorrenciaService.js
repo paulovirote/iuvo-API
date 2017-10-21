@@ -1,5 +1,4 @@
 const OcorrenciaModel = require('../models/OcorrenciaModel');
-const Convert = require('../helpers/Conversion');
 
 class OcorrenciaService {
 
@@ -10,16 +9,16 @@ class OcorrenciaService {
           return dbList;
         }
 
-        // const result = dbList.map(ocorrencia => ({
-        //   id: user.id,
-        //   name: user.name,
-        //   status: user.status,
-        //   createdAt: Convert.toUnixEpoch(user.createdAt),
-        //   updatedAt: Convert.toUnixEpoch(user.updatedAt),
-        //   deletedAt: Convert.toUnixEpoch(user.deletedAt),
-        // }));
-        // return result;
-        return dbList;
+        const result = dbList.map(ocorrencia => ({
+          id: ocorrencia.id,
+          position: {
+            lat: ocorrencia.lat,
+            lng: ocorrencia.lng,
+          },
+          situacao: ocorrencia.situacao,
+          momento: ocorrencia.momento,
+        }));
+        return result;
       });
   }
 
@@ -30,7 +29,15 @@ class OcorrenciaService {
           return null;
         }
 
-        return ocorrencia;
+        return {
+          id: ocorrencia.id,
+          position: {
+            lat: ocorrencia.lat,
+            lng: ocorrencia.lng,
+          },
+          situacao: ocorrencia.situacao,
+          momento: ocorrencia.momento,
+        };
       });
   }
 

@@ -4,8 +4,8 @@ const OcorrenciaService = require('../services/OcorrenciaService');
 class OcorrenciaController {
   static list(req, res) {
     OcorrenciaService.list()
-      .then((rows) => {
-        res.send({ success: true, data: rows });
+      .then((ocorrencias) => {
+        res.send(ocorrencias);
       })
       .catch((err) => {
         Logger.throw(res, '3272358416', err);
@@ -19,7 +19,7 @@ class OcorrenciaController {
           res.send({ success: false, code: '7731668134', message: 'Ocorrencia não encontrada' });
           return;
         }
-        res.send({ success: true, data: ocorrencia });
+        res.send(ocorrencia);
       })
       .catch((err) => {
         Logger.throw(res, '6001059324', err);

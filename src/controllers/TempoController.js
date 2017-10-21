@@ -3,12 +3,15 @@ const TempoService = require('../services/TempoService');
 
 class TempoController {
   static async get(req, res) {
-    const { cidade } = req.query;
+    const position = {
+      lat: req.query.lat,
+      lng: req.query.lng,
+    };
 
     try {
       const [tempoAtual, tempoHoje] = await Promise.all([
-        TempoService.atual(cidade),
-        TempoService.hoje(cidade),
+        TempoService.atual(position),
+        TempoService.hoje(position),
       ]);
 
       const previsoesInfo = TempoService.obterPrevisoesInfos(tempoHoje.list);
@@ -21,6 +24,7 @@ class TempoController {
       const previsao = {};
       previsao.atual = tempoAtual.weather[0].main;
       previsao.critica = TempoService.obterCritica(previsoesInfo.criticos);
+      previsao.descricao = tempoAtual.weather[0].description;
 
       const response = {
         temperatura,

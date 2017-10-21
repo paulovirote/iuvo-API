@@ -21,20 +21,22 @@ class TempoService {
     });
   }
 
-  static async atual(cidade) {
+  static async atual(position) {
     try {
       return await this.request('http://api.openweathermap.org/data/2.5/weather', {
-        q: cidade,
+        lat: position.lat,
+        lon: position.lng,
       });
     } catch (error) {
       throw error;
     }
   }
 
-  static async hoje(cidade) {
+  static async hoje(position) {
     try {
       return await this.request('http://api.openweathermap.org/data/2.5/forecast', {
-        q: cidade,
+        lat: position.lat,
+        lon: position.lng,
         cnt: 8,
       });
     } catch (error) {
