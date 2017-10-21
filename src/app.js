@@ -14,6 +14,7 @@ const userRoutes = require('./routes/user');
 const tempoRoutes = require('./routes/tempo');
 const ocorrenciaRoutes = require('./routes/ocorrencia');
 const enderecoRoutes = require('./routes/endereco');
+const smsRoutes = require('./routes/sms');
 
 /* Express initialization */
 const app = express();
@@ -44,6 +45,7 @@ app.use('/user', userRoutes);
 app.use('/tempo', tempoRoutes);
 app.use('/ocorrencia', ocorrenciaRoutes);
 app.use('/endereco', enderecoRoutes);
+app.use('/sms', smsRoutes);
 
 /* Log errors */
 LoggerConfig.expressError(app);

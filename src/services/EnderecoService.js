@@ -30,6 +30,18 @@ class EnderecoService {
       throw error;
     }
   }
+
+  static async getLocationFromAddress(address) {
+    try {
+      const location = await this.request('/geocode/json', {
+        address,
+      });
+
+      return location.results[0].geometry.location;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = EnderecoService;
